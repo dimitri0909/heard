@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💕 Feliz 2do Aniversario, Mi Amor</title>
+  <meta name="description" content="Una carta de amor especial para celebrar nuestro segundo aniversario juntos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===== PORTADA: LA CARTA CERRADA (FORMA DE FLORES) ===== -->
+  <div id="envelope-screen" class="screen active">
+    <!-- Pétalos decorativos de fondo -->
+    <div class="petals-bg"></div>
+    <!-- Partículas flotantes -->
+    <div class="particles" id="particles"></div>
+
+    <div class="envelope-wrapper">
+      <div class="flower-envelope" id="flowerEnvelope">
+        <!-- Pétalo trasero superior (la solapa) -->
+        <div class="petal-back top-flap" id="topFlap"></div>
+        <div class="petal-back left-flap"></div>
+        <div class="petal-back right-flap"></div>
+        <div class="petal-back bottom-flap"></div>
+
+        <!-- Cuerpo central del sobre -->
+        <div class="envelope-body">
+          <div class="envelope-seal" id="envelopeSeal">
+            <div class="seal-heart">💌</div>
+            <div class="seal-text">Ábrela</div>
+          </div>
+          <div class="envelope-roses">
+            <span class="rose r1">🌹</span>
+            <span class="rose r2">🌸</span>
+            <span class="rose r3">🌹</span>
+            <span class="rose r4">🌺</span>
+            <span class="rose r5">🌸</span>
+            <span class="rose r6">💐</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="envelope-message">
+        <h1 class="main-title">💕 Feliz Aniversario</h1>
+        <p class="subtitle">Una carta llena de amor para ti</p>
+        <button class="open-btn" id="openBtn" onclick="openLetter()">
+          <span>✉️ Abrir mi carta</span>
+          <div class="btn-glow"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== CARTA ABIERTA: CONTENEDOR DE HOJAS ===== -->
+  <div id="letter-screen" class="screen">
+    <!-- Fondo de pétalos cayendo -->
+    <div class="falling-petals" id="fallingPetals"></div>
+
+    <!-- Navegación entre hojas -->
+    <nav class="page-nav" id="pageNav">
+      <button class="nav-btn active" onclick="goToPage(1)" id="nav1" title="Nuestra canción">♪</button>
+      <button class="nav-btn" onclick="goToPage(2)" id="nav2" title="Nosotros">📷</button>
+      <button class="nav-btn" onclick="goToPage(3)" id="nav3" title="Aniversario">💫</button>
+      <button class="nav-btn" onclick="goToPage(4)" id="nav4" title="Mi carta">💌</button>
+    </nav>
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()" title="Música">🎵</button>
+
+    <!-- HOJA 1: MÚSICA -->
+    <div class="letter-page" id="page1">
+      <div class="page-decoration top-deco">
+        <span>🌹</span><span>💕</span><span>🌹</span><span>💕</span><span>🌹</span>
+      </div>
+
+      <div class="page-content music-page">
+        <div class="music-header">
+          <div class="music-icon-wrap">
+            <div class="vinyl-record">
+              <div class="vinyl-center">🎵</div>
+            </div>
+          </div>
+          <h2 class="page-title">Nuestra Canción</h2>
+          <p class="romantic-quote">
+            "Cada nota de esta melodía<br>lleva el eco de tu nombre..."
+          </p>
+        </div>
+
+        <div class="youtube-container">
+          <div class="yt-frame-deco">
+            <video id="localVideo" src="video.mp4" controls controlsList="nodownload" preload="metadata"
+              style="width:100%; display:block; border-radius:12px;">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+          <p class="song-label">♪ <em>Little Bit Better</em> — Caleb Hearn &amp; ROSIE ♪</p>
+        </div>
+
+        <div class="romantic-text-box">
+          <p>
+            Amor mío, cada vez que escucho esta canción pienso en ti.
+            En tus ojos, en tu sonrisa, en ese abrazo que me hace sentir
+            que todo está bien en el mundo. Eres mi canción favorita. 💕
+          </p>
+        </div>
+      </div>
+
+      <div class="page-decoration bottom-deco">
+        <span>🌸</span><span>💗</span><span>🌸</span><span>💗</span><span>🌸</span>
+      </div>
+      <button class="next-page-btn" onclick="goToPage(2)">Siguiente hoja ❯</button>
+    </div>
+
+
+    <!-- HOJA 2: FOTO EN MARCO DE CORAZÓN -->
+    <div class="letter-page hidden" id="page2">
+      <div class="page-decoration top-deco">
+        <span>💖</span><span>🌹</span><span>💖</span><span>🌹</span><span>💖</span>
+      </div>
+
+      <div class="page-content photo-page">
+        <h2 class="page-title">Nosotros 💑</h2>
+        <p class="romantic-quote">"En tus ojos encontré mi hogar..."</p>
+
+        <div class="heart-frame-container">
+          <div class="heart-frame">
+            <div class="heart-shape">
+              <!-- Imagen: coloca tu foto como "foto.jpg" o "foto.png" en la carpeta del proyecto -->
+              <img src="foto.jpg" alt="Nuestra foto juntos" class="couple-photo" id="couplePhoto"
+                onerror="this.onerror=null; document.getElementById('photoPlaceholder').style.display='flex'; this.style.display='none';" />
+              <div class="photo-placeholder" id="photoPlaceholder">
+                <div class="placeholder-inner">
+                  <span class="placeholder-icon">📸</span>
+                  <p>Coloca tu foto aquí<br><small>como "foto.jpg" en la carpeta</small></p>
+                </div>
+              </div>
+            </div>
+            <!-- Corazones decorativos alrededor del marco -->
+            <div class="frame-hearts">
+              <span class="fh fh1">💕</span>
+              <span class="fh fh2">💖</span>
+              <span class="fh fh3">💗</span>
+              <span class="fh fh4">💝</span>
+              <span class="fh fh5">💕</span>
+              <span class="fh fh6">💖</span>
+              <span class="fh fh7">💗</span>
+              <span class="fh fh8">💝</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="romantic-text-box">
+          <p>
+            Esta foto guarda un momento que atesoro en mi corazón.
+            Cada día a tu lado es un regalo que no merezco, pero
+            que cuido con toda mi alma. Eres mi universo. 🌙✨
+          </p>
+        </div>
+      </div>
+
+      <div class="page-decoration bottom-deco">
+        <span>💖</span><span>🌺</span><span>💖</span><span>🌺</span><span>💖</span>
+      </div>
+      <div class="page-nav-btns">
+        <button class="prev-page-btn" onclick="goToPage(1)">❮ Anterior</button>
+        <button class="next-page-btn" onclick="goToPage(3)">Siguiente hoja ❯</button>
+      </div>
+    </div>
+
+
+    <!-- HOJA 3: EL NÚMERO 2 -->
+    <div class="letter-page hidden" id="page3">
+      <div class="page-content anniversary-page">
+        <!-- Confetti/colores -->
+        <div class="confetti-wrap" id="confettiWrap"></div>
+
+        <h2 class="page-title celebration-title">¡Feliz Aniversario!</h2>
+
+        <div class="big-two-wrapper">
+          <div class="big-two" id="bigTwo">2</div>
+          <div class="years-text">
+            <span class="años-label">A Ñ O S</span>
+            <span class="juntos-label">J U N T O S</span>
+          </div>
+        </div>
+
+        <div class="hearts-explosion" id="heartsExplosion"></div>
+
+        <div class="anniversary-message">
+          <p class="msg-line">Dos años de risas,</p>
+          <p class="msg-line">de abrazos interminables,</p>
+          <p class="msg-line">de crecer juntos,</p>
+          <p class="msg-line">de amarnos sin condiciones. 💕</p>
+        </div>
+
+        <div class="sparkle-ring" id="sparkleRing"></div>
+
+        <div class="final-message">
+          <p>Que vengan muchos años más<br>llenos de amor, magia y nosotros. 🌹</p>
+          <div class="signature">Con todo mi amor, siempre 💌</div>
+        </div>
+
+        <div class="fireworks" id="fireworks"></div>
+      </div>
+      <div class="page-nav-btns">
+        <button class="prev-page-btn" onclick="goToPage(2)">❮ Anterior</button>
+        <button class="next-page-btn" onclick="goToPage(4)">Mi carta ❯</button>
+      </div>
+    </div>
+
+
+    <!-- HOJA 4: CARTA PERSONAL -->
+    <div class="letter-page hidden" id="page4">
+      <div class="page-decoration top-deco pastel-deco">
+        <span>🌸</span><span>🌼</span><span>💜</span><span>🌸</span><span>🌼</span>
+      </div>
+
+      <div class="page-content letter-page-content">
+
+        <!-- Cabecera decorativa -->
+        <div class="letter-header">
+          <div class="letter-flowers">
+            <span class="lf lf1">🌸</span>
+            <span class="lf lf2">🌷</span>
+            <span class="lf lf3">🌼</span>
+            <span class="lf lf4">🌸</span>
+            <span class="lf lf5">💐</span>
+          </div>
+          <h2 class="page-title pastel-title">Mi carta para ti 💌</h2>
+          <div class="letter-divider">
+            <span class="ld-line"></span>
+            <span class="ld-heart">💜</span>
+            <span class="ld-line"></span>
+          </div>
+        </div>
+
+        <!-- Zona de mensaje personal -->
+        <div class="personal-letter-wrap">
+          <div class="letter-corner tl">❋</div>
+          <div class="letter-corner tr">❋</div>
+          <div class="letter-corner bl">❋</div>
+          <div class="letter-corner br">❋</div>
+
+          <!-- ✏️ MENSAJE PERSONAL -->
+          <div class="personal-letter-text">
+            <p class="letter-line">
+              Hola mi amor...
+            </p>
+            <p class="letter-line">
+              Espero que estés bien. Lo sé, lo sé, no fue un día muy bueno o eso creo... ya sabes, de un momento a otro comenzó a escribirse nuestra pequeña historia.
+            </p>
+            <p class="letter-line">
+              Cada día voy mejorando en esto de ser un buen novio, sé que a veces me pongo un poco tonto... bueno, siempre jeje, pero en serio me pones un poquito los pelos de punta. Yo sé que también lo intentas y muchooo, y doy gracias a Diosito que sí.
+            </p>
+            <p class="letter-line">
+              Yo quiero tenerte para todaaa mi vida. Sé que hoy tal vez no puedo darte mucho, lo único que puedo es darte pequeñas palabras o memes jeje, pero en serio quiero llenarte de flores, de regalos y de todo lo que usted me pida.
+            </p>
+            <p class="letter-line">
+              Mi niña hermosa, a usted yo la amo, la respeto y la adoro. Quiero que sepas que aún nos faltan muchos días por venir y mejorar, quién sabe y todoooo esto sea nuestra mejor historia y de viejitos estemos juntos, abrazados y felices tomados de la mano. ❤️
+            </p>
+            <p class="letter-line" style="font-weight: 600; text-align: center; color: var(--pastel-mid); margin-top: 8px;">
+              ¡FELIZ SEGUNDO ANIVERSARIO, AMOR! 🌹✨
+            </p>
+          </div>
+
+          <!-- Firma y cierre -->
+          <div class="letter-closing">
+            <div class="closing-divider">
+              <span></span><span>🌸</span><span></span>
+            </div>
+            <p class="closing-text">Con todo mi amor, siempre tuyo,</p>
+            <p class="closing-signature">Diego Yamberla 💕</p>
+          </div>
+        </div>
+
+        <!-- Flores decorativas flotantes -->
+        <div class="floating-blooms" aria-hidden="true">
+          <span class="bloom b1">🌸</span>
+          <span class="bloom b2">🌼</span>
+          <span class="bloom b3">💮</span>
+          <span class="bloom b4">🌷</span>
+          <span class="bloom b5">🌸</span>
+          <span class="bloom b6">🌼</span>
+        </div>
+
+      </div>
+
+      <div class="page-decoration bottom-deco pastel-deco">
+        <span>💜</span><span>🌼</span><span>🌸</span><span>🌼</span><span>💜</span>
+      </div>
+      <div class="page-nav-btns">
+        <button class="prev-page-btn" onclick="goToPage(3)">❮ Anterior</button>
+        <button class="restart-btn" onclick="restartLetter()">✉️ Volver al inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
